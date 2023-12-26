@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.Design;
 
 namespace projeto{
 
@@ -117,5 +118,21 @@ namespace projeto{
             Console.Write("\nOpção: ");
             return int.Parse(Console.ReadLine());
         }
+        public static void AdicionarFilme(){
+            Console.WriteLine("Informe o Nome do Filme: ");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Informe o ID: ");
+            int id = int.Parse(Console.ReadLine());
+
+            foreach(Midia m in View.ListarFilme()){
+                Console.WriteLine(m);
+            }
+            Console.WriteLine("Informe o Tipo de Midia");
+            string tipomidia = Console.ReadLine();
+            
+            View.AdicionarFilme(nome, id, tipomidia);
+            Console.WriteLine("Filme Adicionado com sucesso");
+        }
+        
     }
 }
