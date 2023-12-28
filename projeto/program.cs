@@ -15,19 +15,15 @@ namespace projeto{
                             case 1: AdicionarFilme(); break;
                             case 2: AdicionarLivro(); break;
                             case 3: AdicionarSerie(); break;
-                            case 4: AdicionarMidia(); break;
-                            case 5: ExcluirMidia(); break;
-                            case 6: ExcluirFilme(); break;
-                            case 7: ExcluirLivro(); break;
-                            case 8: ExcluirSerie(); break;
-                            case 9: AtualizarFilme(); break;
-                            case 10: AtualizarLivro(); break;
-                            case 11: AtualizarSerie(); break;
-                            case 12: AtualizarMidia(); break;
-                            case 13: ListarFilme(); break;
-                            case 14: ListarLivro(); break;
-                            case 15: ListarSerie(); break;
-                            case 16: ListarMidia(); break;
+                            case 4: ExcluirFilme(); break;
+                            case 5: ExcluirLivro(); break;
+                            case 6: ExcluirSerie(); break;
+                            case 7: AtualizarFilme(); break;
+                            case 8: AtualizarLivro(); break;
+                            case 9: AtualizarSerie(); break;
+                            case 10: ListarFilme(); break;
+                            case 11: ListarLivro(); break;
+                            case 12: ListarSerie(); break;
                         }
                     }
                     catch (Exception obj){
@@ -100,19 +96,19 @@ namespace projeto{
             Console.WriteLine("01 - Adicionar Filme");
             Console.WriteLine("02 - Adicionar Livro");
             Console.WriteLine("03 - Adicionar Serie");
-            Console.WriteLine("04 - Adicionar Midia");
-            Console.WriteLine("05 - Excluir Filme");
-            Console.WriteLine("06 - Excluir Livro");
-            Console.WriteLine("07 - Excluir Serie");
-            Console.WriteLine("08 - Excluir Midia");
-            Console.WriteLine("09 - Atualizar Filme");
-            Console.WriteLine("10 - Atualizar Livro");
-            Console.WriteLine("11 - Atualizar Serie");
-            Console.WriteLine("12 - Atualizar Midia");
-            Console.WriteLine("13 - Listar Filme");
-            Console.WriteLine("14 - Listar Livro");
-            Console.WriteLine("15 - Listar Serie");
-            Console.WriteLine("16 - Listar Midia");
+            Console.WriteLine("--------------------");
+            Console.WriteLine("04 - Excluir Filme");
+            Console.WriteLine("05 - Excluir Livro");
+            Console.WriteLine("06 - Excluir Serie");
+            Console.WriteLine("--------------------");
+            Console.WriteLine("07 - Atualizar Filme");
+            Console.WriteLine("08 - Atualizar Livro");
+            Console.WriteLine("09 - Atualizar Serie");
+            Console.WriteLine("--------------------");
+            Console.WriteLine("10 - Listar Filme");
+            Console.WriteLine("11 - Listar Livro");
+            Console.WriteLine("12 - Listar Serie");
+            Console.WriteLine("--------------------");
             Console.WriteLine();
             Console.WriteLine("99 - Sair");
             Console.Write("\nOpção: ");
@@ -124,8 +120,8 @@ namespace projeto{
             Console.WriteLine("Informe o ID: ");
             int id = int.Parse(Console.ReadLine());
 
-            foreach(Midia m in View.ListarFilme()){
-                Console.WriteLine(m);
+            foreach(Filme f in View.ListarFilme()){
+                Console.WriteLine(f);
             }
             Console.WriteLine("Informe o Tipo de Midia");
             string tipomidia = Console.ReadLine();
@@ -133,6 +129,35 @@ namespace projeto{
             View.AdicionarFilme(nome, id, tipomidia);
             Console.WriteLine("Filme Adicionado com sucesso");
         }
-        
+        public static void AdicionarSerie(){
+            Console.WriteLine("Informe o Nome da Série: ");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Informe o ID: ");
+            int id = int.Parse(Console.ReadLine());
+
+            foreach(Serie s in View.ListarSerie()){
+                Console.WriteLine(s);
+            }
+            Console.WriteLine("Informe o Tipo de Midia");
+            string tipomidia = Console.ReadLine();
+            
+            View.AdicionarSerie(nome, id, tipomidia);
+            Console.WriteLine("Série Adicionada com sucesso");
+        }
+        public static void AdicionarLivro(){
+            Console.WriteLine("Informe o Nome do Livro: ");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Informe o ID: ");
+            int id = int.Parse(Console.ReadLine());
+
+            foreach(Livro l in View.ListarLivro()){
+                Console.WriteLine(l);
+            }
+            Console.WriteLine("Informe o Tipo de Midia");
+            string tipomidia = Console.ReadLine();
+            
+            View.AdicionarLivro(nome, id, tipomidia);
+            Console.WriteLine("Livro Adicionado com sucesso");
+        }
     }
 }
