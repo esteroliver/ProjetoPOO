@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Xml.Serialization;
 
+namespace midias{
+
 class Midia{
     private int id {
         get { return id; }
@@ -101,7 +103,7 @@ class NFilme{
     }
     public void Atualizar(Filme f){
         FromXML();
-        Filme fil = Listar(f.id);
+        Filme fil = ObterId(f.id);
         if(fil != null){
             filmes.Remove(fil);
             filmes.Add(f);
@@ -110,7 +112,7 @@ class NFilme{
     }
     public void Excluir(Filme f){
         FromXML();
-        Filme fil = Listar(f.id);
+        Filme fil = ObterId(f.id);
         if(fil != null) filmes.Remove(fil);
         ToXML();
     }
@@ -158,7 +160,7 @@ class NSerie{
     }
     public void Atualizar(Serie f){
         FromXML();
-        Serie fil = Listar(f.id);
+        Serie fil = ObterId(f.id);
         if(fil != null){
             series.Remove(fil);
             series.Add(f);
@@ -167,7 +169,7 @@ class NSerie{
     }
     public void Excluir(Serie f){
         FromXML();
-        Serie fil = Listar(f.id);
+        Serie fil = ObterId(f.id);
         if(fil != null) series.Remove(fil);
         ToXML();
     }
@@ -215,7 +217,7 @@ class NLivro{
     }
     public void Atualizar(Livro f){
         FromXML();
-        Livro fil = Listar(f.id);
+        Livro fil = ObterId(f.id);
         if(fil != null){
             livros.Remove(fil);
             livros.Add(f);
@@ -224,8 +226,10 @@ class NLivro{
     }
     public void Excluir(Livro f){
         FromXML();
-        Livro fil = Listar(f.id);
+        Livro fil = ObterId(f.id);
         if(fil != null) livros.Remove(fil);
         ToXML();
     }
+}
+
 }

@@ -1,8 +1,13 @@
 using System;
 using System.Collections.Generic;
+using midias;
 
 class Avaliacao{
-    private int id{
+    private int id_midia{
+        get { return id; }
+        set { id = value; }
+    }
+    private int id_av{
         get { return id; }
         set { id = value; }
     }
@@ -37,5 +42,49 @@ class NAvaliacao{
         catch (FileNotFoundException){
 
         }
+    }
+    public void Inserir(int id, Avaliacao av){ //id da mídia que está sendo avaliada
+        FromXML();
+        av.id_midia = id;
+        int obj_id = 0;
+        foreach (Avaliacao a in avaliacoes){
+            if (a.id > obj_id) obj_id = a.id;
+        }
+        av.id_av = obj_id + 1; //além do id da mídia, cada avaliação terá seu próprio id
+        avaliacoes.Add(av);
+        ToXml();
+    }
+    public List<Avaliacao> ListarAvaliacoes(int id){ //irá listar as avaliações de uma mídia com determinado id
+        FromXML();
+        List<Avaliacao> avs = new List<Avaliacao>();
+        foreach (Avaliacao a in avaliacoes){
+            if (a.id_midia == id) avs.Add(a);
+        }
+        return avs;
+    }
+    public List<Avaliacao> Listar(){ //irá listar todas as avaliações
+        FromXML();
+        return avaliacoes;
+    }
+    public Avaliacao ObterId(int id_av){
+        FromXML();
+        foreach (Avaliacao a in avaliacoes){
+            if (a.id_av == id_av) return a;
+        }
+    }
+    public void Atualizar(Avaliacao av){
+        FromXML();
+        Avaliacao a = ObterId(av.id_av);
+        if (a != null){
+            avaliacoes.Remove(a);
+            avaliacoes.Add(av);
+        }
+        ToXML();
+    }
+    public void Excluir(int id_av){
+        FromXML();
+        Avaliacao a = ObterId(id_av);
+        avaliacoes.Remove(a);
+        ToXML();
     }
 }
