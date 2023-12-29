@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.IO;
+
 class Avaliacao{
     private int id_midia, id_av, nota;
     private string comentario;
