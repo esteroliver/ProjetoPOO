@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using midias;
 
+namespace avaliacoes{
+
 class Avaliacao{
     private int id_midia{
         get { return id; }
@@ -71,6 +73,7 @@ class NAvaliacao{
         foreach (Avaliacao a in avaliacoes){
             if (a.id_av == id_av) return a;
         }
+        return default(Avaliacao);
     }
     public void Atualizar(Avaliacao av){
         FromXML();
@@ -84,7 +87,8 @@ class NAvaliacao{
     public void Excluir(int id_av){
         FromXML();
         Avaliacao a = ObterId(id_av);
-        avaliacoes.Remove(a);
+        if (a != null) avaliacoes.Remove(a);
         ToXML();
     }
+}
 }
