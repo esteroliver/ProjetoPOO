@@ -4,15 +4,18 @@ using System.Xml.Serialization;
 using System.IO;
 
 class Usuario{
-    private int id{
+    private int id;
+    private string username, senha;
+
+    public int Id{
         get{ return id; }
         set{ id = value; }
     }
-    private string username{
+    public string Username{
         get{ return username; }
         set{ if(value != "") username = value; }
     }
-    private string senha{
+    public string Senha{
         get{ return senha; }
         set{ if(value != "") senha = value; }
     }
@@ -44,10 +47,10 @@ class NUsuario{
         FromXML();
         int id = 0;
         foreach (Usuario u in users){
-            if (u.id > id) id = u.id;
+            if (u.Id > id) id = u.Id;
         }
-        us.id = id + 1;
-        users.add(us);
+        us.Id = id + 1;
+        users.Add(us);
         ToXML();
     }
     public List<Usuario> Listar(){
@@ -57,13 +60,13 @@ class NUsuario{
     public Usuario ObterId(int id){
         FromXML();
         foreach (Usuario u in users){
-            if (u.id == id) return u;
+            if (u.Id == id) return u;
         }
         return default(Usuario);
     }
     public void Atualizar(Usuario us){
         FromXML();
-        Usuario us_sus = ObterId(us.id);
+        Usuario us_sus = ObterId(us.Id);
         if (us_sus != null){
             users.Remove(us_sus);
             users.Add(us);
