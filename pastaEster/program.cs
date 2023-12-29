@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using view.cs;
+using view;
 
 class Program{
     public static void Main(){
