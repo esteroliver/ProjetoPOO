@@ -2,74 +2,78 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Xml.Serialization;
-
-namespace midias{
+using System.IO;
 
 class Midia{
-    private int id {
+    private int id, tipo;
+    private string descricao, titulo, autor_diretor;
+    public int Id {
         get { return id; }
         set { id = value; }
     }
-    private int tipo {
+    public int Tipo {
         get { return tipo; }
         set { if (value == 1 || value == 2 || value == 3) tipo = value; }
     }
-    private string descricao {
+    public string Descricao {
         get { return descricao; }
         set { if (value != "") descricao = value; }
     }
-    private string titulo {
+    public string Titulo {
         get { return titulo; }
         set { if (value != "") titulo = value; }
     }
-    private string autor_diretor {
+    public string Autor_diretor {
         get { return autor_diretor; }
         set { if (value != "") autor_diretor = value; }
     }
     public override string ToString(){
-        return $"{id} - {titulo} - Tipo: {tipo}";
+        return $"{Id} - {Titulo} - Tipo: {Tipo}";
     }
 }
 
 class Filme : Midia{
-    private DateTime duracao {
+    private DateTime duracao;
+    public DateTime Duracao {
         get { return duracao; }
         set { duracao = value; }
     }
     public override string ToString(){
-        return $"{id} - {titulo} - Duração: {duracao}";
+        return $"{Id} - {Titulo} - Duração: {Duracao}";
     }
 }
 
 class Serie : Midia{
-    private int temporadas {
+    private int temporadas;
+    public int Temporadas {
         get { return temporadas; }
         set { if (value >= 1) temporadas = value; }
     }
     public override string ToString(){
-         return $"{id} - {titulo} - Temporadas: {temporadas}";
+         return $"{Id} - {Titulo} - Temporadas: {Temporadas}";
     }
 }
 
 class Livro : Midia{
-    private int paginas {
+    private int paginas;
+    public int Paginas {
         get { return paginas; }
         set { if (value >= 1) paginas = value; }
     }
     public override string ToString(){
-         return $"{id} - {titulo} - Páginas: {paginas}";
+         return $"{Id} - {Titulo} - Páginas: {Paginas}";
     }
 }
 
 class NFilme{
     private List<Filme> filmes = new List<Filme>();
-    public void ToXml(){
+    public void ToXML(){
         XmlSerializer xml =  new XmlSerializer(typeof(List<Filme>));
         StreamWriter w = new StreamWriter("Filme.xml");
         xml.Serialize(w, filmes);
         w.Close();
     }
-    public void FromXml(){
+    public void FromXML(){
         try{
             XmlSerializer xml = new XmlSerializer(typeof(List<Filme>));
             StreamReader r = new StreamReader("Filme.xml");
@@ -84,9 +88,9 @@ class NFilme{
         FromXML();
         int id = 0;
         foreach (Filme fil in filmes){
-            if(fil.id > id) id = fil.id;
+            if(fil.Id > id) id = fil.Id;
         }
-        f.id = id + 1;
+        f.Id = id + 1;
         filmes.Add(f);
         ToXML();
     }
@@ -97,13 +101,13 @@ class NFilme{
     public Filme ObterId(int id){
         FromXML();
         foreach (Filme fil in filmes){
-            if(fil.id == id) return fil;
+            if(fil.Id == id) return fil;
         }
         return default(Filme);
     }
     public void Atualizar(Filme f){
         FromXML();
-        Filme fil = ObterId(f.id);
+        Filme fil = ObterId(f.Id);
         if(fil != null){
             filmes.Remove(fil);
             filmes.Add(f);
@@ -112,7 +116,7 @@ class NFilme{
     }
     public void Excluir(Filme f){
         FromXML();
-        Filme fil = ObterId(f.id);
+        Filme fil = ObterId(f.Id);
         if(fil != null) filmes.Remove(fil);
         ToXML();
     }
@@ -120,13 +124,13 @@ class NFilme{
 
 class NSerie{
     private List<Serie> series = new List<Serie>();
-    public void ToXml(){
+    public void ToXML(){
         XmlSerializer xml =  new XmlSerializer(typeof(List<Serie>));
         StreamWriter w = new StreamWriter("Serie.xml");
         xml.Serialize(w, series);
         w.Close();
     }
-    public void FromXml(){
+    public void FromXML(){
         try{
             XmlSerializer xml = new XmlSerializer(typeof(List<Serie>));
             StreamReader r = new StreamReader("Serie.xml");
@@ -141,9 +145,9 @@ class NSerie{
         FromXML();
         int id = 0;
         foreach (Serie fil in series){
-            if(fil.id > id) id = fil.id;
+            if(fil.Id > id) id = fil.Id;
         }
-        f.id = id + 1;
+        f.Id = id + 1;
         series.Add(f);
         ToXML();
     }
@@ -154,13 +158,13 @@ class NSerie{
     public Serie ObterId(int id){
         FromXML();
         foreach (Serie fil in series){
-            if(fil.id == id) return fil;
+            if(fil.Id == id) return fil;
         }
         return default(Serie);
     }
     public void Atualizar(Serie f){
         FromXML();
-        Serie fil = ObterId(f.id);
+        Serie fil = ObterId(f.Id);
         if(fil != null){
             series.Remove(fil);
             series.Add(f);
@@ -169,7 +173,7 @@ class NSerie{
     }
     public void Excluir(Serie f){
         FromXML();
-        Serie fil = ObterId(f.id);
+        Serie fil = ObterId(f.Id);
         if(fil != null) series.Remove(fil);
         ToXML();
     }
@@ -177,13 +181,13 @@ class NSerie{
 
 class NLivro{
     private List<Livro> livros = new List<Livro>();
-    public void ToXml(){
+    public void ToXML(){
         XmlSerializer xml =  new XmlSerializer(typeof(List<Livro>));
         StreamWriter w = new StreamWriter("Livro.xml");
         xml.Serialize(w, livros);
         w.Close();
     }
-    public void FromXml(){
+    public void FromXML(){
         try{
             XmlSerializer xml = new XmlSerializer(typeof(List<Livro>));
             StreamReader r = new StreamReader("Livro.xml");
@@ -198,9 +202,9 @@ class NLivro{
         FromXML();
         int id = 0;
         foreach (Livro fil in livros){
-            if(fil.id > id) id = fil.id;
+            if(fil.Id > id) id = fil.Id;
         }
-        f.id = id + 1;
+        f.Id = id + 1;
         livros.Add(f);
         ToXML();
     }
@@ -211,13 +215,13 @@ class NLivro{
     public Livro ObterId(int id){
         FromXML();
         foreach (Livro fil in livros){
-            if(fil.id == id) return fil;
+            if(fil.Id == id) return fil;
         }
         return default(Livro);
     }
     public void Atualizar(Livro f){
         FromXML();
-        Livro fil = ObterId(f.id);
+        Livro fil = ObterId(f.Id);
         if(fil != null){
             livros.Remove(fil);
             livros.Add(f);
@@ -226,10 +230,8 @@ class NLivro{
     }
     public void Excluir(Livro f){
         FromXML();
-        Livro fil = ObterId(f.id);
+        Livro fil = ObterId(f.Id);
         if(fil != null) livros.Remove(fil);
         ToXML();
     }
-}
-
 }

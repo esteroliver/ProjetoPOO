@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using midias;
-
-namespace avaliacoes{
 
 class Avaliacao{
     private int id_midia{
@@ -28,13 +25,13 @@ class Avaliacao{
 
 class NAvaliacao{
     private List<Avaliacao> avaliacoes = new List<Avaliacao>();
-    public void ToXml(){
+    public void ToXML(){
         XmlSerializer xml =  new XmlSerializer(typeof(List<Avaliacao>));
         StreamWriter w = new StreamWriter("Avaliacao.xml");
         xml.Serialize(w, avaliacoes);
         w.Close();
     }
-    public void FromXml(){
+    public void FromXML(){
         try{
             XmlSerializer xml = new XmlSerializer(typeof(List<Avaliacao>));
             StreamReader r = new StreamReader("Avaliacao.xml");
@@ -54,7 +51,7 @@ class NAvaliacao{
         }
         av.id_av = obj_id + 1; //além do id da mídia, cada avaliação terá seu próprio id
         avaliacoes.Add(av);
-        ToXml();
+        ToXML();
     }
     public List<Avaliacao> ListarAvaliacoes(int id){ //irá listar as avaliações de uma mídia com determinado id
         FromXML();
@@ -90,5 +87,4 @@ class NAvaliacao{
         if (a != null) avaliacoes.Remove(a);
         ToXML();
     }
-}
 }

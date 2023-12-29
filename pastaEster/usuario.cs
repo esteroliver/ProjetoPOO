@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 
-namespace usuarios{
-    
 class Usuario{
     private int id{
         get{ return id; }
@@ -23,13 +21,13 @@ class Usuario{
 
 class NUsuario{
     private List<Usuario> users = new List<Usuario>();
-    public void ToXml(){
+    public void ToXML(){
         XmlSerializer xml =  new XmlSerializer(typeof(List<Usuario>));
         StreamWriter w = new StreamWriter("Usuario.xml");
         xml.Serialize(w, users);
         w.Close();
     }
-    public void FromXml(){
+    public void FromXML(){
         try{
             XmlSerializer xml = new XmlSerializer(typeof(List<Usuario>));
             StreamReader r = new StreamReader("Usuario.xml");
@@ -68,13 +66,12 @@ class NUsuario{
             users.Remove(us_sus);
             users.Add(us);
         }
-        ToXml();
+        ToXML();
     }
     public void Excluir(int id){
         FromXML();
         Usuario us = ObterId(id);
         if(us != null) users.Remove(us);
-        ToXml();
+        ToXML();
     }
-}
 }

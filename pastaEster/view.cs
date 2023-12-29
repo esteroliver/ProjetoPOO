@@ -1,10 +1,5 @@
 using System;
 using System.Collections.Generic;
-using midias;
-using usuarios;
-using avaliacoes;
-
-namespace view{
 
 static class View{
     public bool CadastrarUser(string email, string username, string senha){
@@ -42,11 +37,12 @@ static class View{
         return false;
     }
 
+    
+
     public void ColocarNota(int nota){
 
     }
     public int VerNota(){
         
     }
-}
 }
