@@ -2,7 +2,12 @@ using System;
 using System.Collections.Generic;
 
 static class View{
-    public static bool CadastrarUser(string email, string username, string senha){
+    public static void CriarAdm(){
+        NUsuario usuarios = new NUsuario();
+        Usuario adm = new Usuario{Senha = "IFRNtads2023"};
+        usuarios.Inserir(adm);
+    }
+    public static bool CadastrarUser(string username, string senha){
         if (username == ""){
             throw new ArgumentOutOfRangeException("Nome Inválido");
             return false;
