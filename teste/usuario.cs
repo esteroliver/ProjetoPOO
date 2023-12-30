@@ -20,7 +20,7 @@ class Usuario{
         set{ if(value != "") senha = value; }
     }
     public override string ToString(){
-        return $"{id} - {username}";
+        return $"{Id} - {Username}";
     }
 }
 

@@ -28,7 +28,7 @@ class Avaliacao{
         set { comentario = value; }
     }
     public override string ToString(){
-        return $"{nota} - {comentario}";
+        return $"{Nota} - {Comentario}";
     }
 }
 
