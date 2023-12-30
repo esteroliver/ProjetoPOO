@@ -78,7 +78,7 @@ static class View{
         NAvaliacao avaliacoes = new NAvaliacao();
         int m = 0;
         int n = 0;
-        foreach (Avaliacao a in avaliacoes){
+        foreach (Avaliacao a in avaliacoes.Listar()){
             if (a.Tipo == tipo && a.Id_midia == id){
                 m++;
                 n += a.Nota;
