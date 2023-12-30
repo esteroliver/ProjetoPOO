@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 using System.IO;
 
 class Avaliacao{
-    private int id_midia, id_av, nota;
+    private int id_midia, id_av, tipo,nota;
     private string comentario;
 
     public int Id_midia{
@@ -14,6 +14,10 @@ class Avaliacao{
     public int Id_av{
         get { return id_av; }
         set { id_av = value; }
+    }
+    public int Tipo{
+        get { return tipo; }
+        set { tipo = value; }
     }
     public int Nota{
         get { return nota; }
@@ -48,9 +52,10 @@ class NAvaliacao{
 
         }
     }
-    public void Inserir(int id, Avaliacao av){ //id da mídia que está sendo avaliada
+    public void Inserir(int id, int tipo, Avaliacao av){ //id da mídia que está sendo avaliada
         FromXML();
         av.Id_midia = id;
+        av.Tipo = tipo;
         int obj_id = 0;
         foreach (Avaliacao a in avaliacoes){
             if (a.Id_av > obj_id) obj_id = a.Id_av;

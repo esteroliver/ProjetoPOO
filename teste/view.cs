@@ -37,97 +37,92 @@ static class View{
         return false;
     }
 
-    
-
-    public static void ColocarNota(int nota){
-
+    //listar mídia
+    public static List<Filme> ListarFilmes(){
+        NFilme filmes = new NFilme();
+        return filmes.Listar();
     }
-    public static int VerNota(){
+
+    public static List<Serie> ListarSeries(){
+        NSerie series = new NSerie();
+        return series.Listar();
+    }
+    public static List<Livro> ListarLivros(){
+        NLivro livros = new NLivro();
+        return livros.Listar();
+    }
+    //ver mídia
+    public static Filme VerFilme(int id){
+        NFilme filmes = new NFilme();
+        return filmes.ObterId(id);
+    }
+
+    public static Serie VerSerie(int id){
+        NSerie series = new NSeries();
+        return series.ObterId(id);
+    }
+
+    public static Livro VerLivro(int id){
+        NLivro livros = new NLivro();
+        return livros.ObterId(id);
+    }
+    //MÉTODOS PARA AVALIAÇÃO
+    public static void AvaliarMidia(int tipo, int id, int nota, string comentario){
+        Avaliacao av = new Avaliacao();
+        NAvaliacao avaliacoes = new NAvaliacao();
+        av.Nota = nota;
+        av.Comentario = comentario;
+        avaliacoes.Inserir(id, tipo, av);
+    }
+    public static int NotaMidia(int tipo, int id){ //id e tipo da mídia
+        NAvaliacao avaliacoes = new NAvaliacao();
+        int m = 0;
+        int n = 0;
+        foreach (Avaliacao a in avaliacoes){
+            if (a.Tipo == tipo && a.Id_midia == id){
+                m++;
+                n += a.Nota;
+            }
+        }
+        return n/m;
+    }
+    //MÉTODOS EXCLUSIVOS PARA O ADMINISTRADOR
+    public static void AdicionarMidia(string titulo, string descricao, string autor_diretor, int tipo){
+        if(titulo == "") throw new ArgumentOutOfRangeException("Nome Inválido");
+        if(descricao == "") throw new ArgumentOutOfRangeException("Descrição Inválida");
+        if(autor_diretor == "") throw new ArgumentOutOfRangeException("Autor/diretor Inválido");
+        if(tipo > 3 || tipo < 0) throw new ArgumentOutOfRangeException("Tipo Inválido");
+        if (tipo == 1){
+            Filme f = new Filme{ Titulo = titulo, Descricao = descricao, Autor_diretor = autor_diretor, Tipo = tipo };
+            NFilme filmes  = new NFilme();
+            filmes.Inserir(f);
+        }
+        if (tipo == 2){
+            Serie s = new Serie{ Titulo = titulo, Descricao = descricao, Autor_diretor = autor_diretor, Tipo = tipo };
+            NSerie series = new NSerie();
+            series.Inserir(s);
+        }
+        if (tipo == 3){
+            Livro l = new Livro{ Titulo = titulo, Descricao = descricao, Autor_diretor = autor_diretor, Tipo = tipo };
+            NLivro livros = new NLivro();
+            livros.Inserir(l);
+        }
         
     }
-    // public static void AdicionarFilme(string nome, int id, string tipomidia){
-    //     if(nome == " ") throw new ArgumentOutOfRangeException("Nome Inválido");
-    //     if(id == 0) throw new ArgumentOutOfRangeException("Id inválido");
-    //     if(tipomidia != "Filme") throw new ArgumentOutOfRangeException("Tipo Inválido");
-
-    //     Filme f = new Filme{ Nome = nome, Id = id, Tipo = tipomidia};
-    //     NFilme nf  = new NFilme();
-    //     nf.Inserir(f);
-    // }
-    // // public static List<Filme> ListarFilme(){
-    // //     Filme f = new Filme();
-    // //     return f.Listar();
-    // // }
-    // public static void AdicionarLivro(string nome, int id, string tipomidia){
-    //     if(nome == " ") throw new ArgumentOutOfRangeException("Nome Inválido");
-    //     if(id == 0) throw new ArgumentOutOfRangeException("Id inválido");
-    //     if(tipomidia != "Livro") throw new ArgumentOutOfRangeException("Tipo Inválido");
-
-    //     Livro l = new Livro{ Nome = nome, Id = id, Tipo = tipomidia};
-    //     NLivro nl  = new NLivro();
-    //     nl.Inserir(l);
-    // }
-    // public static void AdicionarSerie(string nome, int id, string tipomidia){
-    //     if(nome == " ") throw new ArgumentOutOfRangeException("Nome Inválido");
-    //     if(id == 0) throw new ArgumentOutOfRangeException("Id inválido");
-    //     if(tipomidia != "Serie") throw new ArgumentOutOfRangeException("Tipo Inválido");
-
-    //     Serie s = new Serie{ Nome = nome, Id = id, Tipo = tipomidia};
-    //     NSerie ns  = new NSerie();
-    //     ns.Inserir(s);
-    // }
-    // public static void ExcluirFilme(int id){
-    //     Filme f = new Filme{Id = id};
-    //     NFilme nf = new NFilme();
-    //     nf.Excluir(f);
-    // }
-    // public static void ExcluirLivro(int id){
-    //     Livro f = new Livro{Id = id};
-    //     NLivro nf = new NLivro();
-    //     nf.Excluir(f);
-    // }
-    // public static void ExcluirSerie(int id){
-    //     Serie f = new Serie{Id = id};
-    //     NSerie nf = new NSerie();
-    //     nf.Excluir(f);
-    // }
-    // public static void AtualizarLivro(string nome, int id, string tipomidia){
-    //     if(nome == " ") throw new ArgumentOutOfRangeException("Nome Inválido");
-    //     if(id == 0) throw new ArgumentOutOfRangeException("Id inválido");
-    //     if(tipomidia != "Livro") throw new ArgumentOutOfRangeException("Tipo Inválido");
-
-    //     Livro l = new Livro{ Nome = nome, Id = id, Tipo = tipomidia};
-    //     NLivro nl  = new NLivro();
-    //     nl.Atualizar(l);
-    // }
-    // public static void AtualizarSerie(string nome, int id, string tipomidia){
-    //     if(nome == " ") throw new ArgumentOutOfRangeException("Nome Inválido");
-    //     if(id == 0) throw new ArgumentOutOfRangeException("Id inválido");
-    //     if(tipomidia != "Serie") throw new ArgumentOutOfRangeException("Tipo Inválido");
-
-    //     Serie s = new Serie{ Nome = nome, Id = id, Tipo = tipomidia};
-    //     NSerie ns  = new NSerie();
-    //     ns.Atualizar(s);
-    // }
-    // public static void AtualizarFilme(string nome, int id, string tipomidia){
-    //     if(nome == " ") throw new ArgumentOutOfRangeException("Nome Inválido");
-    //     if(id == 0) throw new ArgumentOutOfRangeException("Id inválido");
-    //     if(tipomidia != "Filme") throw new ArgumentOutOfRangeException("Tipo Inválido");
-
-    //     Filme f = new Filme{ Nome = nome, Id = id, Tipo = tipomidia};
-    //     NFilme nf  = new NFilme();
-    //     nf.Atualizar(f);
-    // }
-    // public static List<Filme> ListarFilme(string tipomidia){
-    //     NFilme nf = new NFilme();
-    //     return nf.Listar(new NFilme{Tipo = tipomidia});
-    // }
-    // public static List<Livro> ListarLivro(string tipomidia){
-    //     NLivro nl = new NLivro();
-    //     return nl.Listar(new NLivro{Tipo = tipomidia});
-    // }
-    // public static List<Serie> ListarSerie(string tipomidia){
-    //     NSerie ns = new NSerie();
-    //     return ns.Listar(new NSerie{Tipo = tipomidia});
-    // }
+    public static void ExcluirMidia(int tipo, int id){
+        if(tipo > 3 || tipo < 0) throw new ArgumentOutOfRangeException("Tipo Inválido");
+        if (tipo == 1){
+            NFilme filmes  = new NFilme();
+            filmes.Excluir(id);
+        }
+        if (tipo == 2){
+            NSerie series = new NSerie();
+            series.Excluir(id);
+        }
+        if (tipo == 3){
+            NLivro livros = new NLivro();
+            livros.Excluir(id);
+        }
+    }
+    //MÉTODOS PARA QUE OS USUÁRIOS CRIEM AS PRÓPRIAS LISTAS
 }

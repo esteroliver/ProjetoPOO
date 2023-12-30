@@ -114,9 +114,9 @@ class NFilme{
         }
         ToXML();
     }
-    public void Excluir(Filme f){
+    public void Excluir(int id){
         FromXML();
-        Filme fil = ObterId(f.Id);
+        Filme fil = ObterId(id);
         if(fil != null) filmes.Remove(fil);
         ToXML();
     }
@@ -171,9 +171,9 @@ class NSerie{
         }
         ToXML();
     }
-    public void Excluir(Serie f){
+    public void Excluir(int id){
         FromXML();
-        Serie fil = ObterId(f.Id);
+        Serie fil = ObterId(id);
         if(fil != null) series.Remove(fil);
         ToXML();
     }
@@ -228,9 +228,9 @@ class NLivro{
         }
         ToXML();
     }
-    public void Excluir(Livro f){
+    public void Excluir(int id){
         FromXML();
-        Livro fil = ObterId(f.Id);
+        Livro fil = ObterId(id);
         if(fil != null) livros.Remove(fil);
         ToXML();
     }
