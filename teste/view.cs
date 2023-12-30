@@ -58,7 +58,7 @@ static class View{
     }
 
     public static Serie VerSerie(int id){
-        NSerie series = new NSeries();
+        NSerie series = new NSerie();
         return series.ObterId(id);
     }
 
