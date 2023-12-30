@@ -18,7 +18,8 @@ class Program{
                     if(!entrar) break;
                     int op3 = MenuAdministrador();
                     if(op3 == 5) break;
-                    switch(op3){
+                    else int op4 = op3;
+                    switch(op4){
                         case 1: MostrarMidias(1); break;
                         case 2: MostrarMidias(2); break;
                         case 3: MostrarMidias(3); break;
