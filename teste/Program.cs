@@ -5,43 +5,39 @@ using System.Collections.Generic;
 class Program{
     public static void Main(){
         Console.WriteLine("ListUP");
-        int operation_1 = Login();
-        if (operation_1 == 1){
-            bool cadastrado = Cadastrar();
-            // if (cadastrado)
-            //     new EntrarUsuario();
-            // if (entrar) 
-            //     MenuUsuario();
-        }
-        if (operation_1 == 2){
-            int operation_2 = TipoUser();
-            if (operation_2 == 1){
-                bool entrar_adm = EntrarAdministrador();
-                if (entrar_adm){
-                    int operation_3 = MenuAdministrador();
-                    if (operation_3 == 1 || operation_3 == 2 || operation_3 == 3) {
-                        //lista de mídias
+        int op = Login();
+        switch(op){
+            case 1: //cadastrar
+                Cadastrar();
+                break;
+            case 2: //entrar
+                int op2 = TipoUser();
+                //ADMINISTRADOR
+                if(op2 == 1){
+                    bool entrar = EntrarAdministrador();
+                    if(!entrar) break;
+                    int op3 = MenuAdministrador();
+                    if(op3 == 5) break;
+                    switch(op3){
+                        case 1: MostrarMidias(1); break;
+                        case 2: MostrarMidias(2); break;
+                        case 3: MostrarMidias(3); break;
+                        case 4: AdicionarMidiaSistema(); break;
                     }
                 }
-            }
-            if (operation_2 == 2){
-                bool entrar_user = EntrarUsuario();
-                if (entrar_user){
-                    int operation_3 = MenuUsuario();
-                    if (operation_3 == 1 || operation_3 == 2 || operation_3 == 3) {
-                        //lista de mídias
-                    }
-                    if (operation_3 == 4){
-                        //mostrar minhas listas
-                    }
-                    if (operation_3 == 5){
-                        //sair do sistema
+                //USUÁRIO
+                if(op2 == 2){
+                    bool entrar = EntrarUsuario();
+                    if(!entrar) break;
+                    int op3 = MenuUsuario();
+                    if(op3 == 5) break;
+                    switch(op3){
+                        case 1: MostrarMidias(1); break;
+                        case 2: MostrarMidias(2); break;
+                        case 3: MostrarMidias(3); break;
                     }
                 }
-            }
-            if (operation_2 == 3) Login(); //????
         }
-        // else para retornar erro
     }
     public static int Login(){
         Console.WriteLine("1 - Cadastrar");
@@ -65,9 +61,8 @@ class Program{
     public static int TipoUser(){
         Console.WriteLine("1 - Administrador");
         Console.WriteLine("2 - Usuario");
-        Console.WriteLine("3 - Voltar");
         int op = int.Parse(Console.ReadLine());
-        if(op == 1 || op == 2 || op == 3) return op;
+        if(op == 1 || op == 2) return op;
         else return 0;
     }
     public static bool EntrarAdministrador(){
@@ -108,6 +103,40 @@ class Program{
     }
     //OPÇÕES DO MENU
     public static void MostrarMidias(int tipo){
+        if (tipo == 1){
+            List<Filme> fs = View.ListarFilmes();
+            foreach(Filme f in fs){
+                Console.WriteLine($"{f.Id} - {f.Titulo}");
+            }
+        }
+        if (tipo == 2){
+            List<Serie> ss = View.ListarSeries();
+            foreach(Serie s in ss){
+                Console.WriteLine($"{s.Id} - {s.Titulo}")
+            }
+        }
+        if (tipo == 2){
+            List<Livro> ls = View.ListarLivros();
+            foreach(Livro l in ls){
+                Console.WriteLine($"{l.Id} - {l.Titulo}")
+            }
+        }
+    }
+    public static void AdicionarMidiaSistema(){
+        Console.WriteLine("Selecione o tipo da mídia")
+        Console.WriteLine("1 - Filme");
+        Console.WriteLine("2 - Série");
+        Console.WriteLine("3 - Livro");
         
+        int add = int.Parse(Console.ReadLine());
+        if (add < 4 && add > 0){
+            Console.WriteLine("Título:");
+            string titulo = Console.ReadLine();
+            Console.WriteLine("Descrição:");
+            string descricao = Console.ReadLine();
+            Console.WriteLine("Autor/diretor:");
+            string autor_diretor = Console.ReadLine();
+            View.AdicionarMidia(titulo, descricao, autor_diretor, add);
+        }
     }
 }
