@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 class Program{
     public static void Main(){
-        Administrador();
+        //Administrador();
         Console.WriteLine("TADSBoxD");
         int op = Login();
         switch(op){
@@ -40,11 +40,11 @@ class Program{
                 } break;
         }
     }
-    public static void Administrador(){
-        Usuario user = new Usuario{Id = 1, Username = "admin", Senha = "IFRNtads2023"};
-        NUsuario usuarios = new NUsuario();
-        usuarios.Add(user);
-    }
+    // public static void Administrador(){
+    //     Usuario user = new Usuario{Id = 1, Username = "admin", Senha = "IFRNtads2023"};
+    //     NUsuario usuarios = new NUsuario();
+    //     usuarios.Add(user);
+    // }
     public static int Login(){
         Console.WriteLine("1 - Cadastrar");
         Console.WriteLine("2 - Entrar");

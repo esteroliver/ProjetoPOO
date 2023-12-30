@@ -32,7 +32,8 @@ static class View{
     }
     public static bool EntrarAdm(string senha){
         NUsuario usuarios = new NUsuario();
-        Usuario u = usuarios.ObterId(1); // 1 é o id do usuário administrador
+        Usuario u = usuarios.ObterId(1);
+        //string s = "TADS2023.1"; // 1 é o id do usuário administrador
         if (u.Senha == senha) return true;
         return false;
     }
