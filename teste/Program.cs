@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 class Program{
     public static void Main(){
-        Console.WriteLine("ListUP");
+        Console.WriteLine("TADSBoxD");
         int op = Login();
         switch(op){
             case 1: //cadastrar
@@ -24,7 +24,7 @@ class Program{
                         case 3: MostrarMidias(3); break;
                         case 4: AdicionarMidiaSistema(); break;
                     }
-                }
+                } 
                 //USUÁRIO
                 if(op2 == 2){
                     bool entrar = EntrarUsuario();
@@ -36,7 +36,7 @@ class Program{
                         case 2: MostrarMidias(2); break;
                         case 3: MostrarMidias(3); break;
                     }
-                }
+                } break;
         }
     }
     public static int Login(){
@@ -112,18 +112,18 @@ class Program{
         if (tipo == 2){
             List<Serie> ss = View.ListarSeries();
             foreach(Serie s in ss){
-                Console.WriteLine($"{s.Id} - {s.Titulo}")
+                Console.WriteLine($"{s.Id} - {s.Titulo}");
             }
         }
         if (tipo == 2){
             List<Livro> ls = View.ListarLivros();
             foreach(Livro l in ls){
-                Console.WriteLine($"{l.Id} - {l.Titulo}")
+                Console.WriteLine($"{l.Id} - {l.Titulo}");
             }
         }
     }
     public static void AdicionarMidiaSistema(){
-        Console.WriteLine("Selecione o tipo da mídia")
+        Console.WriteLine("Selecione o tipo da mídia");
         Console.WriteLine("1 - Filme");
         Console.WriteLine("2 - Série");
         Console.WriteLine("3 - Livro");
