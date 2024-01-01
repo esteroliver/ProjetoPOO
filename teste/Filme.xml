@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfFilme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Filme>
+    <Id>1</Id>
+    <Tipo>1</Tipo>
+    <Descricao>Filme sobre Oppenheimer</Descricao>
+    <Titulo>Oppenheimer</Titulo>
+    <Autor_diretor>Christopher Nolan</Autor_diretor>
+    <Duracao>0001-01-01T00:00:00</Duracao>
+  </Filme>
+</ArrayOfFilme>

@@ -4,7 +4,7 @@ using System.Security.Claims;
 using System.Xml.Serialization;
 using System.IO;
 
-class Midia{
+public class Midia{
     private int id, tipo;
     private string descricao, titulo, autor_diretor;
     public int Id {
@@ -32,7 +32,7 @@ class Midia{
     }
 }
 
-class Filme : Midia{
+public class Filme : Midia{
     private DateTime duracao;
     public DateTime Duracao {
         get { return duracao; }
@@ -43,7 +43,7 @@ class Filme : Midia{
     }
 }
 
-class Serie : Midia{
+public class Serie : Midia{
     private int temporadas;
     public int Temporadas {
         get { return temporadas; }
@@ -54,7 +54,7 @@ class Serie : Midia{
     }
 }
 
-class Livro : Midia{
+public class Livro : Midia{
     private int paginas;
     public int Paginas {
         get { return paginas; }
@@ -65,7 +65,7 @@ class Livro : Midia{
     }
 }
 
-class NFilme{
+public class NFilme{
     private List<Filme> filmes = new List<Filme>();
     public void ToXML(){
         XmlSerializer xml =  new XmlSerializer(typeof(List<Filme>));
@@ -122,7 +122,7 @@ class NFilme{
     }
 }
 
-class NSerie{
+public class NSerie{
     private List<Serie> series = new List<Serie>();
     public void ToXML(){
         XmlSerializer xml =  new XmlSerializer(typeof(List<Serie>));
@@ -179,7 +179,7 @@ class NSerie{
     }
 }
 
-class NLivro{
+public class NLivro{
     private List<Livro> livros = new List<Livro>();
     public void ToXML(){
         XmlSerializer xml =  new XmlSerializer(typeof(List<Livro>));

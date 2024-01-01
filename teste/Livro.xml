@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfLivro xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Livro>
+    <Id>1</Id>
+    <Tipo>3</Tipo>
+    <Descricao>Livro narra a jornada de Bilbo o Bolseiro, se passa antes dos acontecimentos de Senhor dos Aneis</Descricao>
+    <Titulo>O Hobbit</Titulo>
+    <Autor_diretor>J. R. R. Tolkien</Autor_diretor>
+    <Paginas>0</Paginas>
+  </Livro>
+</ArrayOfLivro>

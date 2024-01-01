@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 class Program{
     public static void Main(){
-        //Administrador();
+        Administrador();
         Console.WriteLine("TADSBoxD");
         int op = Login();
         switch(op){
@@ -18,12 +18,13 @@ class Program{
                     bool entrar = EntrarAdministrador();
                     if(!entrar) break;
                     int op3 = MenuAdministrador();
-                    if(op3 == 5) break;
+                    if(op3 == 6) break;
                     switch(op3){
                         case 1: MostrarMidias(1); break;
                         case 2: MostrarMidias(2); break;
                         case 3: MostrarMidias(3); break;
                         case 4: AdicionarMidiaSistema(); break;
+                        case 5: ExcluirMidiaSistema(); break;
                     }
                 } 
                 //USUÁRIO
@@ -40,11 +41,11 @@ class Program{
                 } break;
         }
     }
-    // public static void Administrador(){
-    //     Usuario user = new Usuario{Id = 1, Username = "admin", Senha = "IFRNtads2023"};
-    //     NUsuario usuarios = new NUsuario();
-    //     usuarios.Add(user);
-    // }
+    public static void Administrador(){
+        Usuario user = new Usuario{Id = 1, Username = "admin", Senha = "IFRNtads2023"};
+        NUsuario usuarios = new NUsuario();
+        usuarios.Inserir(user);
+    }
     public static int Login(){
         Console.WriteLine("1 - Cadastrar");
         Console.WriteLine("2 - Entrar");
@@ -102,7 +103,8 @@ class Program{
         Console.WriteLine("2 - Ver séries");
         Console.WriteLine("3 - Ver livros");
         Console.WriteLine("4 - Adicionar mídia");
-        Console.WriteLine("5 - Sair do sistema");
+        Console.WriteLine("5 - Excluir mídia");
+        Console.WriteLine("6 - Sair do sistema");
 
         int op = int.Parse(Console.ReadLine());
         return op;
@@ -121,7 +123,7 @@ class Program{
                 Console.WriteLine($"{s.Id} - {s.Titulo}");
             }
         }
-        if (tipo == 2){
+        if (tipo == 3){
             List<Livro> ls = View.ListarLivros();
             foreach(Livro l in ls){
                 Console.WriteLine($"{l.Id} - {l.Titulo}");
@@ -143,6 +145,20 @@ class Program{
             Console.WriteLine("Autor/diretor:");
             string autor_diretor = Console.ReadLine();
             View.AdicionarMidia(titulo, descricao, autor_diretor, add);
+        }
+    }
+    
+    public static void ExcluirMidiaSistema(){
+        Console.WriteLine("Selecione o tipo da mídia");
+        Console.WriteLine("1 - Filme");
+        Console.WriteLine("2 - Série");
+        Console.WriteLine("3 - Livro");
+
+        int exc = int.Parse(Console.ReadLine());
+        if(exc < 4 && exc > 0){
+            Console.WriteLine("Id: ");
+            int Id = int.Parse(Console.ReadLine());
+            View.ExcluirMidia(exc, Id);
         }
     }
 }

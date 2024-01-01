@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSerie xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Serie>
+    <Id>1</Id>
+    <Tipo>2</Tipo>
+    <Descricao>Sitcom sobre 6 amigos vivendo em Nova Iorque</Descricao>
+    <Titulo>Friends</Titulo>
+    <Autor_diretor>David Crane</Autor_diretor>
+    <Temporadas>0</Temporadas>
+  </Serie>
+</ArrayOfSerie>

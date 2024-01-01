@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-static class View{
+ static class View{
     public static bool CadastrarUser(string email, string username, string senha){
         if (username == ""){
             throw new ArgumentOutOfRangeException("Nome Inválido");
@@ -89,9 +89,9 @@ static class View{
     }
     //MÉTODOS EXCLUSIVOS PARA O ADMINISTRADOR
     public static void AdicionarMidia(string titulo, string descricao, string autor_diretor, int tipo){
-        if(titulo == "") throw new ArgumentOutOfRangeException("Nome Inválido");
-        if(descricao == "") throw new ArgumentOutOfRangeException("Descrição Inválida");
-        if(autor_diretor == "") throw new ArgumentOutOfRangeException("Autor/diretor Inválido");
+        if(titulo == " ") throw new ArgumentOutOfRangeException("Nome Inválido");
+        if(descricao == " ") throw new ArgumentOutOfRangeException("Descrição Inválida");
+        if(autor_diretor == " ") throw new ArgumentOutOfRangeException("Autor/diretor Inválido");
         if(tipo > 3 || tipo < 0) throw new ArgumentOutOfRangeException("Tipo Inválido");
         if (tipo == 1){
             Filme f = new Filme{ Titulo = titulo, Descricao = descricao, Autor_diretor = autor_diretor, Tipo = tipo };

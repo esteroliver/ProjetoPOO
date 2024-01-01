@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.IO;
 
-class Usuario{
+public class Usuario{
     private int id;
     private string username, senha;
 
@@ -20,12 +20,12 @@ class Usuario{
         set{ if(value != "") senha = value; }
     }
     public override string ToString(){
-        return $"{Id} - {Username}";
+        return $"{id} - {username}";
     }
 }
 
-class NUsuario{
-    private List<Usuario> users = new List<Usuario>();
+public class NUsuario{
+    public List<Usuario> users = new List<Usuario>();
     public void ToXML(){
         XmlSerializer xml =  new XmlSerializer(typeof(List<Usuario>));
         StreamWriter w = new StreamWriter("Usuario.xml");
