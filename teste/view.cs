@@ -1,8 +1,18 @@
 using System;
 using System.Collections.Generic;
 
+<<<<<<< HEAD
  static class View{
     public static bool CadastrarUser(string email, string username, string senha){
+=======
+static class View{
+    public static void CriarAdm(){
+        NUsuario usuarios = new NUsuario();
+        Usuario adm = new Usuario{Senha = "IFRNtads2023"};
+        usuarios.Inserir(adm);
+    }
+    public static bool CadastrarUser(string username, string senha){
+>>>>>>> 4ab94b05a63769f6c6b59fe0a205bb765a28cd04
         if (username == ""){
             throw new ArgumentOutOfRangeException("Nome Inválido");
             return false;

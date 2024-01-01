@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-//using view.cs;
 
 class Program{
     public static void Main(){
@@ -9,8 +8,15 @@ class Program{
         int op = Login();
         switch(op){
             case 1: //cadastrar
-                Cadastrar();
-                break;
+                bool cadastro = Cadastrar();
+                if(cadastro){
+                    Console.WriteLine("Usuário cadastrado com sucesso!");
+                    break;
+                }
+                else{
+                    Console.WriteLine("Aparentemente, esse nome de usuário já existe! Tente novamente.")
+                    break;
+                }
             case 2: //entrar
                 int op2 = TipoUser();
                 //ADMINISTRADOR
@@ -20,9 +26,9 @@ class Program{
                     int op3 = MenuAdministrador();
                     if(op3 == 6) break;
                     switch(op3){
-                        case 1: MostrarMidias(1); break;
-                        case 2: MostrarMidias(2); break;
-                        case 3: MostrarMidias(3); break;
+                        case 1: MostrarMidiasAdministrador(1); break;
+                        case 2: MostrarMidiasAdministrador(2); break;
+                        case 3: MostrarMidiasAdministrador(3); break;
                         case 4: AdicionarMidiaSistema(); break;
                         case 5: ExcluirMidiaSistema(); break;
                     }
@@ -42,9 +48,13 @@ class Program{
         }
     }
     public static void Administrador(){
+<<<<<<< HEAD
         Usuario user = new Usuario{Id = 1, Username = "admin", Senha = "IFRNtads2023"};
         NUsuario usuarios = new NUsuario();
         usuarios.Inserir(user);
+=======
+        View.CriarAdm();
+>>>>>>> 4ab94b05a63769f6c6b59fe0a205bb765a28cd04
     }
     public static int Login(){
         Console.WriteLine("1 - Cadastrar");
@@ -57,13 +67,10 @@ class Program{
         Console.WriteLine("Insira seu username:");
         string username = Console.ReadLine();
 
-        Console.WriteLine("Insira seu email:");
-        string email = Console.ReadLine();
-
         Console.WriteLine("Insira sua senha:");
         string senha = Console.ReadLine();
 
-        return View.CadastrarUser(email, username, senha);
+        return View.CadastrarUser(username, senha);
     }
     public static int TipoUser(){
         Console.WriteLine("1 - Administrador");
@@ -110,26 +117,95 @@ class Program{
         return op;
     }
     //OPÇÕES DO MENU
-    public static void MostrarMidias(int tipo){
+    public static void MostrarMidiasAdministrador(int tipo){
         if (tipo == 1){
-            List<Filme> fs = View.ListarFilmes();
-            foreach(Filme f in fs){
+            foreach(Filme f in View.ListarFilmes()){
                 Console.WriteLine($"{f.Id} - {f.Titulo}");
             }
         }
         if (tipo == 2){
-            List<Serie> ss = View.ListarSeries();
-            foreach(Serie s in ss){
+            foreach(Serie s in View.ListarSeries()){
                 Console.WriteLine($"{s.Id} - {s.Titulo}");
             }
         }
         if (tipo == 3){
+<<<<<<< HEAD
             List<Livro> ls = View.ListarLivros();
             foreach(Livro l in ls){
+=======
+            foreach(Livro l in View.ListarLivros()){
+>>>>>>> 4ab94b05a63769f6c6b59fe0a205bb765a28cd04
                 Console.WriteLine($"{l.Id} - {l.Titulo}");
             }
         }
+
+        Console.WriteLine("");
+        Console.WriteLine("Digite o ID da mídia que deseja visualizar");
+        int id_midia = int.Parse(Console.ReadLine()); 
+        //colocar as opções
     }
+
+    public static void MostrarMidias(int tipo){
+        if (tipo == 1){
+            foreach(Filme f in View.ListarFilmes()){
+                Console.WriteLine($"{f.Id} - {f.Titulo}");
+            }
+        }
+        if (tipo == 2){
+            foreach(Serie s in View.ListarSeries()){
+                Console.WriteLine($"{s.Id} - {s.Titulo}");
+            }
+        }
+        if (tipo == 3){
+            foreach(Livro l in View.ListarLivros()){
+                Console.WriteLine($"{l.Id} - {l.Titulo}");
+            }
+        }
+
+        Console.WriteLine("");
+        Console.WriteLine("Digite o ID da mídia que deseja visualizar");
+        int id_midia = int.Parse(Console.ReadLine());
+        if (tipo == 1){
+            Filme f = new Filme();
+            f = View.VerFilme(id_midia);
+            Console.WriteLine($"{f.Titulo} - {f.Autor_diretor}");
+            Console.WriteLine($"Sinopse: {f.Descricao}");
+        }
+        if (tipo == 2){
+            Serie s = new Serie();
+            s = View.VerSerie(id_midia);
+            Console.WriteLine($"{s.Titulo} - {s.Autor_diretor}");
+            Console.WriteLine($"Sinopse: {s.Descricao}");
+        }
+            
+        if (tipo == 3){
+            Livro l = new Livro();
+            l = View.VerLivro(id_midia);
+            Console.WriteLine($"{l.Titulo} - {l.Autor_diretor}");
+            Console.WriteLine($"Sinopse: {l.Descricao}");
+        }
+        //opções do usuário
+            //avaliar
+            //adicionar a lista
+            //voltar
+        Console.WriteLine(" ");
+        Console.WriteLine("Deseja realizar alguma operação?");
+        Console.WriteLine("1 - Avaliar");
+        Console.WriteLine("2 - Adicionar a lista");
+        Console.WriteLine("3 - Ver nota");
+        Console.WriteLine("4 - Voltar");
+
+        int op = int.Parse(Console.ReadLine());
+        if (op == 1) AvaliacaoDeMidia(id_midia, tipo);
+        if (op == 2) AdicionarLista();
+        if (op == 3){
+            int nota = View.NotaMidia(tipo, id_midia);
+            Console.WriteLine($"Nota: {nota}");
+        }
+        else
+            Console.WriteLine("Voltando!");
+    }
+    
     public static void AdicionarMidiaSistema(){
         Console.WriteLine("Selecione o tipo da mídia");
         Console.WriteLine("1 - Filme");
@@ -147,6 +223,7 @@ class Program{
             View.AdicionarMidia(titulo, descricao, autor_diretor, add);
         }
     }
+<<<<<<< HEAD
     
     public static void ExcluirMidiaSistema(){
         Console.WriteLine("Selecione o tipo da mídia");
@@ -160,5 +237,18 @@ class Program{
             int Id = int.Parse(Console.ReadLine());
             View.ExcluirMidia(exc, Id);
         }
+=======
+
+    public static void AvaliacaoDeMidia(int id, int tipo){
+        Console.WriteLine("Nota (de 0 a 10):")
+        int nota = int.Parse(Console.ReadLine());
+        Console.WriteLine("Comentário:")
+        string coment = Console.ReadLine();
+        View.AvaliarMidia(tipo, id, nota, coment);
+    }
+
+    public static void AdicionarLista(){
+        //TO DO
+>>>>>>> 4ab94b05a63769f6c6b59fe0a205bb765a28cd04
     }
 }
