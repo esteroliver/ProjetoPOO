@@ -19,6 +19,7 @@ class Program{
                 }
             case 2: //entrar
                 int op2 = TipoUser();
+                int sair;
                 //ADMINISTRADOR
                 if(op2 == 1){
                     bool entrar = EntrarAdministrador();
@@ -135,6 +136,51 @@ class Program{
         Console.WriteLine("Digite o ID da mídia que deseja visualizar");
         int id_midia = int.Parse(Console.ReadLine()); 
         //colocar as opções
+        if (tipo == 1){
+            Filme f = new Filme();
+            f = View.VerFilme(id_midia);
+            Console.WriteLine($"{f.Titulo} - {f.Autor_diretor}");
+            Console.WriteLine($"Sinopse: {f.Descricao}");
+        }
+        if (tipo == 2){
+            Serie s = new Serie();
+            s = View.VerSerie(id_midia);
+            Console.WriteLine($"{s.Titulo} - {s.Autor_diretor}");
+            Console.WriteLine($"Sinopse: {s.Descricao}");
+        }
+            
+        if (tipo == 3){
+            Livro l = new Livro();
+            l = View.VerLivro(id_midia);
+            Console.WriteLine($"{l.Titulo} - {l.Autor_diretor}");
+            Console.WriteLine($"Sinopse: {l.Descricao}");
+        }
+         
+        Console.WriteLine(" ");
+        Console.WriteLine("Deseja realizar alguma operação?");
+        Console.WriteLine("1 - Excluir");
+        Console.WriteLine("2 - Editar");
+        Console.WriteLine("3 - Voltar");
+
+        int op = int.Parse(Console.ReadLine());
+
+        if(op == 1){
+            Console.WriteLine("Id: ");
+            int Id = int.Parse(Console.ReadLine());
+            View.ExcluirMidia(tipo, Id);
+        }
+        if(op == 2){
+            Console.WriteLine("Id: ");
+            int Id = int.Parse(Console.ReadLine());
+            Console.WriteLine("Título: ");
+            string Titulo = Console.ReadLine();
+            Console.WriteLine("Descrição: ");
+            string Titulo = Console.ReadLine();
+            Console.WriteLine("Autor/diretor: ");
+            string Titulo = Console.ReadLine();
+
+            View.AtualizarMidia(titulo, descricao, autor_diretor, tipo, id);
+        }
     }
 
     public static void MostrarMidias(int tipo){
@@ -216,19 +262,19 @@ class Program{
         }
     }
     
-    public static void ExcluirMidiaSistema(){
-        Console.WriteLine("Selecione o tipo da mídia");
-        Console.WriteLine("1 - Filme");
-        Console.WriteLine("2 - Série");
-        Console.WriteLine("3 - Livro");
+    // public static void ExcluirMidiaSistema(){
+    //     Console.WriteLine("Selecione o tipo da mídia");
+    //     Console.WriteLine("1 - Filme");
+    //     Console.WriteLine("2 - Série");
+    //     Console.WriteLine("3 - Livro");
 
-        int exc = int.Parse(Console.ReadLine());
-        if(exc < 4 && exc > 0){
-            Console.WriteLine("Id: ");
-            int Id = int.Parse(Console.ReadLine());
-            View.ExcluirMidia(exc, Id);
-        }
-    }
+    //     int exc = int.Parse(Console.ReadLine());
+    //     if(exc < 4 && exc > 0){
+    //         Console.WriteLine("Id: ");
+    //         int Id = int.Parse(Console.ReadLine());
+    //         View.ExcluirMidia(exc, Id);
+    //     }
+    // }
 
     public static void AvaliacaoDeMidia(int id, int tipo){
         Console.WriteLine("Nota (de 0 a 10):")
