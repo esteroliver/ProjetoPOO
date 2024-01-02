@@ -1,11 +1,6 @@
 using System;
 using System.Collections.Generic;
-
-<<<<<<< HEAD
- static class View{
-    public static bool CadastrarUser(string email, string username, string senha){
-=======
-static class View{
+public static class View{
     public static void CriarAdm(){
         NUsuario usuarios = new NUsuario();
         Usuario adm = new Usuario{Senha = "IFRNtads2023"};

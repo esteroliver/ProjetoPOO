@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.IO;
 
-class Avaliacao{
+public class Avaliacao{
     private int id_midia, id_av, tipo,nota;
     private string comentario;
 
@@ -33,7 +33,7 @@ class Avaliacao{
 }
 
 
-class NAvaliacao{
+public class NAvaliacao{
     private List<Avaliacao> avaliacoes = new List<Avaliacao>();
     public void ToXML(){
         XmlSerializer xml =  new XmlSerializer(typeof(List<Avaliacao>));
