@@ -48,13 +48,10 @@ class Program{
         }
     }
     public static void Administrador(){
-<<<<<<< HEAD
         Usuario user = new Usuario{Id = 1, Username = "admin", Senha = "IFRNtads2023"};
         NUsuario usuarios = new NUsuario();
         usuarios.Inserir(user);
-=======
         View.CriarAdm();
->>>>>>> 4ab94b05a63769f6c6b59fe0a205bb765a28cd04
     }
     public static int Login(){
         Console.WriteLine("1 - Cadastrar");
@@ -129,12 +126,7 @@ class Program{
             }
         }
         if (tipo == 3){
-<<<<<<< HEAD
-            List<Livro> ls = View.ListarLivros();
-            foreach(Livro l in ls){
-=======
             foreach(Livro l in View.ListarLivros()){
->>>>>>> 4ab94b05a63769f6c6b59fe0a205bb765a28cd04
                 Console.WriteLine($"{l.Id} - {l.Titulo}");
             }
         }
@@ -223,7 +215,6 @@ class Program{
             View.AdicionarMidia(titulo, descricao, autor_diretor, add);
         }
     }
-<<<<<<< HEAD
     
     public static void ExcluirMidiaSistema(){
         Console.WriteLine("Selecione o tipo da mídia");
@@ -237,7 +228,7 @@ class Program{
             int Id = int.Parse(Console.ReadLine());
             View.ExcluirMidia(exc, Id);
         }
-=======
+    }
 
     public static void AvaliacaoDeMidia(int id, int tipo){
         Console.WriteLine("Nota (de 0 a 10):")
@@ -249,6 +240,5 @@ class Program{
 
     public static void AdicionarLista(){
         //TO DO
->>>>>>> 4ab94b05a63769f6c6b59fe0a205bb765a28cd04
     }
 }
