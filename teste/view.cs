@@ -1,5 +1,10 @@
 using System;
 using System.Collections.Generic;
+
+<<<<<<< HEAD
+ static class View{
+    public static bool CadastrarUser(string email, string username, string senha){
+=======
 static class View{
     public static void CriarAdm(){
         NUsuario usuarios = new NUsuario();
@@ -129,5 +134,26 @@ static class View{
             livros.Excluir(id);
         }
     }
-    //MÉTODOS PARA QUE OS USUÁRIOS CRIEM AS PRÓPRIAS LISTAS
+    public static void AtualizarMidia(string titulo, string descricao, string autor_diretor, int tipo, int id){
+        if(titulo == " ") throw new ArgumentOutOfRangeException("Nome Inválido");
+        if(descricao == " ") throw new ArgumentOutOfRangeException("Descrição Inválida");
+        if(autor_diretor == " ") throw new ArgumentOutOfRangeException("Autor/diretor Inválido");
+        if(tipo > 3 || tipo < 0) throw new ArgumentOutOfRangeException("Tipo Inválido");
+        if (tipo == 1){
+            Filme f = new Filme{ Titulo = titulo, Descricao = descricao, Autor_diretor = autor_diretor, Tipo = tipo };
+            NFilme filmes  = new NFilme();
+            filmes.Atualizar(f);
+        }
+        if (tipo == 2){
+            Serie s = new Serie{ Titulo = titulo, Descricao = descricao, Autor_diretor = autor_diretor, Tipo = tipo };
+            NSerie series = new NSerie();
+            series.Atualizar(s);
+        }
+        if (tipo == 3){
+            Livro l = new Livro{ Titulo = titulo, Descricao = descricao, Autor_diretor = autor_diretor, Tipo = tipo };
+            NLivro livros = new NLivro();
+            livros.Atualizar(l);
+        }
+    }
 }
+    //MÉTODOS PARA QUE OS USUÁRIOS CRIEM AS PRÓPRIAS LISTAS
