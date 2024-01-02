@@ -19,19 +19,17 @@ class Program{
                 }
             case 2: //entrar
                 int op2 = TipoUser();
-                int sair;
                 //ADMINISTRADOR
                 if(op2 == 1){
                     bool entrar = EntrarAdministrador();
                     if(!entrar) break;
                     int op3 = MenuAdministrador();
-                    if(op3 == 6) break;
+                    if(op3 == 5) break;
                     switch(op3){
                         case 1: MostrarMidiasAdministrador(1); break;
                         case 2: MostrarMidiasAdministrador(2); break;
                         case 3: MostrarMidiasAdministrador(3); break;
                         case 4: AdicionarMidiaSistema(); break;
-                        case 5: ExcluirMidiaSistema(); break;
                     }
                 } 
                 //USUÁRIO
@@ -39,7 +37,7 @@ class Program{
                     bool entrar = EntrarUsuario();
                     if(!entrar) break;
                     int op3 = MenuUsuario();
-                    if(op3 == 5) break;
+                    if(op3 == 4) break;
                     switch(op3){
                         case 1: MostrarMidias(1); break;
                         case 2: MostrarMidias(2); break;
@@ -97,8 +95,7 @@ class Program{
         Console.WriteLine("1 - Ver filmes");
         Console.WriteLine("2 - Ver séries");
         Console.WriteLine("3 - Ver livros");
-        Console.WriteLine("4 - Minhas listas");
-        Console.WriteLine("5 - Sair do sistema");
+        Console.WriteLine("4 - Sair do sistema");
 
         int op = int.Parse(Console.ReadLine());
         return op;
@@ -108,8 +105,7 @@ class Program{
         Console.WriteLine("2 - Ver séries");
         Console.WriteLine("3 - Ver livros");
         Console.WriteLine("4 - Adicionar mídia");
-        Console.WriteLine("5 - Excluir mídia");
-        Console.WriteLine("6 - Sair do sistema");
+        Console.WriteLine("5 - Sair do sistema");
 
         int op = int.Parse(Console.ReadLine());
         return op;
@@ -181,6 +177,8 @@ class Program{
 
             View.AtualizarMidia(titulo, descricao, autor_diretor, tipo, id);
         }
+        else
+            Console.WriteLine("Voltando!");
     }
 
     public static void MostrarMidias(int tipo){
@@ -229,14 +227,12 @@ class Program{
         Console.WriteLine(" ");
         Console.WriteLine("Deseja realizar alguma operação?");
         Console.WriteLine("1 - Avaliar");
-        Console.WriteLine("2 - Adicionar a lista");
-        Console.WriteLine("3 - Ver nota");
-        Console.WriteLine("4 - Voltar");
+        Console.WriteLine("2 - Ver nota");
+        Console.WriteLine("3 - Voltar");
 
         int op = int.Parse(Console.ReadLine());
         if (op == 1) AvaliacaoDeMidia(id_midia, tipo);
-        if (op == 2) AdicionarLista();
-        if (op == 3){
+        if (op == 2){
             int nota = View.NotaMidia(tipo, id_midia);
             Console.WriteLine($"Nota: {nota}");
         }
@@ -282,9 +278,5 @@ class Program{
         Console.WriteLine("Comentário:")
         string coment = Console.ReadLine();
         View.AvaliarMidia(tipo, id, nota, coment);
-    }
-
-    public static void AdicionarLista(){
-        //TO DO
     }
 }
