@@ -1,0 +1,4 @@
+C:\Users\Lucas\Desktop\ProjetoPOO\projeto\obj\Debug\net7.0\projeto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lucas\Desktop\ProjetoPOO\projeto\obj\Debug\net7.0\projeto.AssemblyInfoInputs.cache
+C:\Users\Lucas\Desktop\ProjetoPOO\projeto\obj\Debug\net7.0\projeto.AssemblyInfo.cs
+C:\Users\Lucas\Desktop\ProjetoPOO\projeto\obj\Debug\net7.0\projeto.csproj.CoreCompileInputs.cache

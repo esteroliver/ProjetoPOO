@@ -34,6 +34,7 @@ public class Midia{
 
 public class Filme : Midia{
     private DateTime duracao;
+    [XmlIgnore]
     public DateTime Duracao {
         get { return duracao; }
         set { duracao = value; }

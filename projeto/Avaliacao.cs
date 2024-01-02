@@ -1,5 +1,5 @@
 using System;
-using Syste.Collections.Generic;
+using System.Collections.Generic;
 class Avaliacao{
     public string Comentario {get; set;}
     public int Nota {get; set;}
