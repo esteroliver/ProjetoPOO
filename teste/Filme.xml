@@ -6,6 +6,12 @@
     <Descricao>Filme sobre Oppenheimer</Descricao>
     <Titulo>Oppenheimer</Titulo>
     <Autor_diretor>Christopher Nolan</Autor_diretor>
-    <Duracao>0001-01-01T00:00:00</Duracao>
+  </Filme>
+  <Filme>
+    <Id>2</Id>
+    <Tipo>1</Tipo>
+    <Descricao>Barbie vai ao mundo real</Descricao>
+    <Titulo>Barbie 2023</Titulo>
+    <Autor_diretor>Greta</Autor_diretor>
   </Filme>
 </ArrayOfFilme>

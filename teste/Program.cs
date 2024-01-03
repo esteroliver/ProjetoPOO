@@ -4,43 +4,56 @@ using System.Collections.Generic;
 class Program{
     public static void Main(){
         Administrador();
-        Console.WriteLine("TADSBoxD");
-        int op = Login();
-
-        switch(op){
-            case 1:
-                bool cadastro = Cadastrar();
-                if (cadastro){
-                    Console.WriteLine("Usuário cadastrado.");
-                    break;
-                }
-                else {
-                    Console.WriteLine("Esse nome de usuário já existe.");
-                    break;
-                }
-            case 2:
-                int op2 = TipoUser();
-                if (op2 == 1){
-                    bool entrar = EntrarAdministrador();
-                    if (!entrar) break;
-                    int op3 = MenuAdministrador();
-                    switch(op3){
-                        case 1: MostrarMidiasAdministrador(1); break;
-                        case 2: MostrarMidiasAdministrador(2); break;
-                        case 3: MostrarMidiasAdministrador(3); break;
-                        case 4: AdicionarMidiaSistema(); break;
+        int op = 0;
+        while(op != 3){
+            op = Login();
+            switch(op){
+                case 1:
+                    bool cadastro = Cadastrar();
+                    if (cadastro){
+                        Console.WriteLine("Usuário cadastrado.");
+                        break;
                     }
-                }
-                if (op2 == 2){
-                    bool entrar = EntrarUsuario();
-                    if (!entrar) break;
-                    int op3 = MenuUsuario();
-                    switch(op3){
-                        case 1: MostrarMidias(1); break;
-                        case 2: MostrarMidias(2); break;
-                        case 3: MostrarMidias(3); break;
+                    else {
+                        Console.WriteLine("Esse nome de usuário já existe.");
+                        break;
                     }
-                } break;
+                case 2:
+                    int op2 = TipoUser();
+                    if (op2 == 1){
+                        bool entrar = EntrarAdministrador();
+                        if (!entrar){
+                            Console.WriteLine("Senha inválida.");
+                            break;
+                        }
+                        int op3 = 0;
+                        while (op3 != 5){
+                            op3 = MenuAdministrador();
+                            switch(op3){
+                                case 1: MostrarMidiasAdministrador(1); break;
+                                case 2: MostrarMidiasAdministrador(2); break;
+                                case 3: MostrarMidiasAdministrador(3); break;
+                                case 4: AdicionarMidiaSistema(); break;
+                            }
+                        }
+                    }
+                    if (op2 == 2){
+                        bool entrar = EntrarUsuario();
+                        if (!entrar){
+                            Console.WriteLine("Senha ou usuário inválidos.");
+                            break;
+                        }
+                        int op3 = 0;
+                        while(op3 != 4){
+                            op3 = MenuUsuario();
+                            switch(op3){
+                                case 1: MostrarMidias(1); break;
+                                case 2: MostrarMidias(2); break;
+                                case 3: MostrarMidias(3); break;
+                            }
+                        }
+                    } break;
+            }
         }
     }
     
@@ -51,10 +64,14 @@ class Program{
         View.CriarAdm();
     }
     public static int Login(){
+        Console.WriteLine("----------------");
+        Console.WriteLine("TADSBoxD");
+        Console.WriteLine("----------------");
         Console.WriteLine("1 - Cadastrar");
         Console.WriteLine("2 - Entrar");
+        Console.WriteLine("3 - Sair");
         int op = int.Parse(Console.ReadLine());
-        if(op == 1 || op == 2) return op;
+        if(op == 1 || op == 2 || op == 3) return op;
         else return 0;
     }
     public static bool Cadastrar(){

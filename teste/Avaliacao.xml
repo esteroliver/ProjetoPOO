@@ -7,4 +7,32 @@
     <Nota>10</Nota>
     <Comentario>Filme Fantastico</Comentario>
   </Avaliacao>
+  <Avaliacao>
+    <Id_midia>1</Id_midia>
+    <Id_av>2</Id_av>
+    <Tipo>1</Tipo>
+    <Nota>0</Nota>
+    <Comentario>Maravilhoso</Comentario>
+  </Avaliacao>
+  <Avaliacao>
+    <Id_midia>1</Id_midia>
+    <Id_av>3</Id_av>
+    <Tipo>1</Tipo>
+    <Nota>5</Nota>
+    <Comentario>bosta</Comentario>
+  </Avaliacao>
+  <Avaliacao>
+    <Id_midia>2</Id_midia>
+    <Id_av>4</Id_av>
+    <Tipo>1</Tipo>
+    <Nota>10</Nota>
+    <Comentario>incrível</Comentario>
+  </Avaliacao>
+  <Avaliacao>
+    <Id_midia>1</Id_midia>
+    <Id_av>5</Id_av>
+    <Tipo>1</Tipo>
+    <Nota>10</Nota>
+    <Comentario>Muito bom</Comentario>
+  </Avaliacao>
 </ArrayOfAvaliacao>
