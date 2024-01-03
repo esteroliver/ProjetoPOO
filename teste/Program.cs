@@ -1,56 +1,49 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 
 class Program{
     public static void Main(){
-        Administrador()
-        int op = 0;
-        while(op != 3 && op != 0){
-            Console.WriteLine("TADSBoxD");
-            op = Login();
+        Administrador();
+        Console.WriteLine("TADSBoxD");
+        int op = Login();
 
-            switch(op){
-                case 1:
-                    bool cadastro = Cadastrar();
-                    if (cadastro){
-                        Console.WriteLine("Usuário cadastrado.");
-                        break;
+        switch(op){
+            case 1:
+                bool cadastro = Cadastrar();
+                if (cadastro){
+                    Console.WriteLine("Usuário cadastrado.");
+                    break;
+                }
+                else {
+                    Console.WriteLine("Esse nome de usuário já existe.");
+                    break;
+                }
+            case 2:
+                int op2 = TipoUser();
+                if (op2 == 1){
+                    bool entrar = EntrarAdministrador();
+                    if (!entrar) break;
+                    int op3 = MenuAdministrador();
+                    switch(op3){
+                        case 1: MostrarMidiasAdministrador(1); break;
+                        case 2: MostrarMidiasAdministrador(2); break;
+                        case 3: MostrarMidiasAdministrador(3); break;
+                        case 4: AdicionarMidiaSistema(); break;
                     }
-                    else {
-                        Console.WriteLine("Esse nome de usuário já existe.");
-                        break;
+                }
+                if (op2 == 2){
+                    bool entrar = EntrarUsuario();
+                    if (!entrar) break;
+                    int op3 = MenuUsuario();
+                    switch(op3){
+                        case 1: MostrarMidias(1); break;
+                        case 2: MostrarMidias(2); break;
+                        case 3: MostrarMidias(3); break;
                     }
-                case 2:
-                    int op2 = TipoUser();
-                    if (op2 == 1){
-                        bool entrar = EntrarAdministrador();
-                        if (!entrar) break;
-                        int op3 = MenuAdministrador();
-                        while(op3 != 5){
-                            switch(op3){
-                                case 1: MostrarMidiasAdministrador(1); break;
-                                case 2: MostrarMidiasAdministrador(2); break;
-                                case 3: MostrarMidiasAdministrador(3); break;
-                                case 4: AdicionarMidiaSistema(); break;
-                            }
-                            
-                        }
-                    }
-                    if (op2 == 2){
-                        bool entrar = EntrarUsuario();
-                        if (!entrar) break;
-                        int op3 = MenuUsuario();
-                        while(op3 != 4){
-                            switch(op3){
-                            case 1: MostrarMidias(1); break;
-                            case 2: MostrarMidias(2); break;
-                            case 3: MostrarMidias(3); break;
-                            }
-                        }
-                    } break;
-            }
+                } break;
         }
     }
+    
     public static void Administrador(){
         Usuario user = new Usuario{Id = 1, Username = "admin", Senha = "IFRNtads2023"};
         NUsuario usuarios = new NUsuario();
@@ -60,9 +53,8 @@ class Program{
     public static int Login(){
         Console.WriteLine("1 - Cadastrar");
         Console.WriteLine("2 - Entrar");
-        Console.WriteLine("3 - Sair do sistema");
         int op = int.Parse(Console.ReadLine());
-        if(op == 1 || op == 2 || op == 3) return op;
+        if(op == 1 || op == 2) return op;
         else return 0;
     }
     public static bool Cadastrar(){
@@ -183,8 +175,10 @@ class Program{
 
             View.AtualizarMidia(titulo, descricao, autor_diretor, tipo, id);
         }
-        else
+        if(op == 3){
             Console.WriteLine("Voltando!");
+                
+        }
     }
 
     public static void MostrarMidias(int tipo){
@@ -242,8 +236,9 @@ class Program{
             int nota = View.NotaMidia(tipo, id_midia);
             Console.WriteLine($"Nota: {nota}");
         }
-        else
+        if(op == 3){
             Console.WriteLine("Voltando!");
+        }
     }
     
     public static void AdicionarMidiaSistema(){
