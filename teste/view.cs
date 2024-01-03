@@ -135,7 +135,7 @@ public static class View{
         if(autor_diretor == " ") throw new ArgumentOutOfRangeException("Autor/diretor Inválido");
         if(tipo > 3 || tipo < 0) throw new ArgumentOutOfRangeException("Tipo Inválido");
         if (tipo == 1){
-            Filme f = new Filme{ Titulo = titulo, Descricao = descricao, Autor_diretor = autor_diretor, Tipo = tipo };
+            Filme f = new Filme{ Titulo = titulo, Descricao = descricao, Autor_diretor = autor_diretor, Tipo = tipo, Id = id};
             NFilme filmes  = new NFilme();
             filmes.Atualizar(f);
         }

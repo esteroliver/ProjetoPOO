@@ -8,12 +8,4 @@
     <Autor_diretor>J. R. R. Tolkien</Autor_diretor>
     <Paginas>0</Paginas>
   </Livro>
-  <Livro>
-    <Id>2</Id>
-    <Tipo>3</Tipo>
-    <Descricao>Harry Potter descobre que é bruxo e vai pra hogwarts</Descricao>
-    <Titulo>Harry Potter 1</Titulo>
-    <Autor_diretor>JK Rowling</Autor_diretor>
-    <Paginas>0</Paginas>
-  </Livro>
 </ArrayOfLivro>

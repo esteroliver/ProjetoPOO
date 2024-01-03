@@ -8,10 +8,10 @@
     <Autor_diretor>Christopher Nolan</Autor_diretor>
   </Filme>
   <Filme>
-    <Id>2</Id>
+    <Id>3</Id>
     <Tipo>1</Tipo>
-    <Descricao>Barbie vai ao mundo real</Descricao>
-    <Titulo>Barbie 2023</Titulo>
-    <Autor_diretor>Greta</Autor_diretor>
+    <Descricao>gato buscando pelas 9 vidas</Descricao>
+    <Titulo>Gato de botas 2</Titulo>
+    <Autor_diretor>dreamworks</Autor_diretor>
   </Filme>
 </ArrayOfFilme>

@@ -35,4 +35,32 @@
     <Nota>10</Nota>
     <Comentario>Muito bom</Comentario>
   </Avaliacao>
+  <Avaliacao>
+    <Id_midia>1</Id_midia>
+    <Id_av>6</Id_av>
+    <Tipo>3</Tipo>
+    <Nota>10</Nota>
+    <Comentario>Legal</Comentario>
+  </Avaliacao>
+  <Avaliacao>
+    <Id_midia>1</Id_midia>
+    <Id_av>7</Id_av>
+    <Tipo>3</Tipo>
+    <Nota>2</Nota>
+    <Comentario>n gostei</Comentario>
+  </Avaliacao>
+  <Avaliacao>
+    <Id_midia>1</Id_midia>
+    <Id_av>8</Id_av>
+    <Tipo>3</Tipo>
+    <Nota>5</Nota>
+    <Comentario>mais ou menos</Comentario>
+  </Avaliacao>
+  <Avaliacao>
+    <Id_midia>1</Id_midia>
+    <Id_av>9</Id_av>
+    <Tipo>1</Tipo>
+    <Nota>3</Nota>
+    <Comentario>legal</Comentario>
+  </Avaliacao>
 </ArrayOfAvaliacao>
