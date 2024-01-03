@@ -63,4 +63,18 @@
     <Nota>3</Nota>
     <Comentario>legal</Comentario>
   </Avaliacao>
+  <Avaliacao>
+    <Id_midia>1</Id_midia>
+    <Id_av>10</Id_av>
+    <Tipo>1</Tipo>
+    <Nota>10</Nota>
+    <Comentario>muito bom</Comentario>
+  </Avaliacao>
+  <Avaliacao>
+    <Id_midia>2</Id_midia>
+    <Id_av>11</Id_av>
+    <Tipo>2</Tipo>
+    <Nota>10</Nota>
+    <Comentario>gostei muito</Comentario>
+  </Avaliacao>
 </ArrayOfAvaliacao>

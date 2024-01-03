@@ -10,8 +10,8 @@
   <Filme>
     <Id>3</Id>
     <Tipo>1</Tipo>
-    <Descricao>gato buscando pelas 9 vidas</Descricao>
+    <Descricao>O gato de botas luta contra a morte em busca das suas 9 vidas.</Descricao>
     <Titulo>Gato de botas 2</Titulo>
-    <Autor_diretor>dreamworks</Autor_diretor>
+    <Autor_diretor>Dreamworks</Autor_diretor>
   </Filme>
 </ArrayOfFilme>

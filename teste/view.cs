@@ -73,6 +73,7 @@ public static class View{
     }
     //MÉTODOS PARA AVALIAÇÃO
     public static void AvaliarMidia(int tipo, int id, int nota, string comentario){
+        if (nota < 0 || nota > 10) throw new ArgumentOutOfRangeException("Nota Inválida");
         Avaliacao av = new Avaliacao();
         NAvaliacao avaliacoes = new NAvaliacao();
         av.Nota = nota;

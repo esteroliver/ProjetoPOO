@@ -8,4 +8,12 @@
     <Autor_diretor>David Crane</Autor_diretor>
     <Temporadas>0</Temporadas>
   </Serie>
+  <Serie>
+    <Id>2</Id>
+    <Tipo>2</Tipo>
+    <Descricao>Fofocas de nova york</Descricao>
+    <Titulo>Gossip Girl</Titulo>
+    <Autor_diretor>nse</Autor_diretor>
+    <Temporadas>0</Temporadas>
+  </Serie>
 </ArrayOfSerie>
