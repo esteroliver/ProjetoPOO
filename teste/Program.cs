@@ -6,42 +6,44 @@ class Program{
         Administrador();
         Console.WriteLine("TADSBoxD");
         int op = Login();
+
         switch(op){
-            case 1: //cadastrar
+            case 1:
                 bool cadastro = Cadastrar();
-                if(cadastro){
-                    Console.WriteLine("Usuário cadastrado com sucesso!");
+                if (cadastro){
+                    Console.WriteLine("Usuário cadastrado.");
                     break;
                 }
-                else{
-                    Console.WriteLine("Aparentemente, esse nome de usuário já existe! Tente novamente.")
+                else {
+                    Console.WriteLine("Esse nome de usuário já existe.");
                     break;
                 }
-            case 2: //entrar
+            case 2:
                 int op2 = TipoUser();
-                //ADMINISTRADOR
-                if(op2 == 1){
+                if (op2 == 1){
                     bool entrar = EntrarAdministrador();
-                    if(!entrar) break;
+                    if (!entrar) break;
                     int op3 = MenuAdministrador();
-                    if(op3 == 5) break;
-                    switch(op3){
-                        case 1: MostrarMidiasAdministrador(1); break;
-                        case 2: MostrarMidiasAdministrador(2); break;
-                        case 3: MostrarMidiasAdministrador(3); break;
-                        case 4: AdicionarMidiaSistema(); break;
+                    while(op3 != 5){
+                        switch(op3){
+                            case 1: MostrarMidiasAdministrador(1); break;
+                            case 2: MostrarMidiasAdministrador(2); break;
+                            case 3: MostrarMidiasAdministrador(3); break;
+                            case 4: AdicionarMidiaSistema(); break;
+                        }
+                        
                     }
-                } 
-                //USUÁRIO
-                if(op2 == 2){
+                }
+                if (op2 == 2){
                     bool entrar = EntrarUsuario();
-                    if(!entrar) break;
+                    if (!entrar) break;
                     int op3 = MenuUsuario();
-                    if(op3 == 4) break;
-                    switch(op3){
+                    while(op3 != 4){
+                        switch(op3){
                         case 1: MostrarMidias(1); break;
                         case 2: MostrarMidias(2); break;
                         case 3: MostrarMidias(3); break;
+                        }
                     }
                 } break;
         }
@@ -258,20 +260,6 @@ class Program{
         }
     }
     
-    // public static void ExcluirMidiaSistema(){
-    //     Console.WriteLine("Selecione o tipo da mídia");
-    //     Console.WriteLine("1 - Filme");
-    //     Console.WriteLine("2 - Série");
-    //     Console.WriteLine("3 - Livro");
-
-    //     int exc = int.Parse(Console.ReadLine());
-    //     if(exc < 4 && exc > 0){
-    //         Console.WriteLine("Id: ");
-    //         int Id = int.Parse(Console.ReadLine());
-    //         View.ExcluirMidia(exc, Id);
-    //     }
-    // }
-
     public static void AvaliacaoDeMidia(int id, int tipo){
         Console.WriteLine("Nota (de 0 a 10):")
         int nota = int.Parse(Console.ReadLine());
