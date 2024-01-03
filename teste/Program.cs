@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 
 class Program{
@@ -14,8 +14,13 @@ class Program{
                     Console.WriteLine("Usuário cadastrado.");
                     break;
                 }
+<<<<<<< HEAD
                 else {
                     Console.WriteLine("Esse nome de usuário já existe.");
+=======
+                else{
+                    Console.WriteLine("Aparentemente, esse nome de usuário já existe! Tente novamente.");
+>>>>>>> 0dce658479dcddd76687c9425f602f8318c956be
                     break;
                 }
             case 2:
@@ -169,13 +174,13 @@ class Program{
         }
         if(op == 2){
             Console.WriteLine("Id: ");
-            int Id = int.Parse(Console.ReadLine());
+            int id = int.Parse(Console.ReadLine());
             Console.WriteLine("Título: ");
-            string Titulo = Console.ReadLine();
+            string titulo = Console.ReadLine();
             Console.WriteLine("Descrição: ");
-            string Titulo = Console.ReadLine();
+            string descricao = Console.ReadLine();
             Console.WriteLine("Autor/diretor: ");
-            string Titulo = Console.ReadLine();
+            string autor_diretor = Console.ReadLine();
 
             View.AtualizarMidia(titulo, descricao, autor_diretor, tipo, id);
         }
@@ -261,9 +266,9 @@ class Program{
     }
     
     public static void AvaliacaoDeMidia(int id, int tipo){
-        Console.WriteLine("Nota (de 0 a 10):")
+        Console.WriteLine("Nota (de 0 a 10):");
         int nota = int.Parse(Console.ReadLine());
-        Console.WriteLine("Comentário:")
+        Console.WriteLine("Comentário:");
         string coment = Console.ReadLine();
         View.AvaliarMidia(tipo, id, nota, coment);
     }

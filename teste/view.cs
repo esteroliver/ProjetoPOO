@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-
- static class View{
+public static class View{
     public static void CriarAdm(){
         NUsuario usuarios = new NUsuario();
         Usuario adm = new Usuario{Senha = "IFRNtads2023"};
