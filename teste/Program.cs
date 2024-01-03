@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 
 class Program{
@@ -14,13 +14,8 @@ class Program{
                     Console.WriteLine("Usuário cadastrado.");
                     break;
                 }
-<<<<<<< HEAD
                 else {
                     Console.WriteLine("Esse nome de usuário já existe.");
-=======
-                else{
-                    Console.WriteLine("Aparentemente, esse nome de usuário já existe! Tente novamente.");
->>>>>>> 0dce658479dcddd76687c9425f602f8318c956be
                     break;
                 }
             case 2:
