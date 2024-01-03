@@ -262,4 +262,13 @@
     <Id>56</Id>
     <Senha>IFRNtads2023</Senha>
   </Usuario>
+  <Usuario>
+    <Id>57</Id>
+    <Username>admin</Username>
+    <Senha>IFRNtads2023</Senha>
+  </Usuario>
+  <Usuario>
+    <Id>58</Id>
+    <Senha>IFRNtads2023</Senha>
+  </Usuario>
 </ArrayOfUsuario>
